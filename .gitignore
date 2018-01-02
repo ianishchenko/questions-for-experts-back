@@ -11,5 +11,7 @@ tmp
 package-lock.json
 yarn.lock
 
+.idea
+
 # The development sqlite file
 database/development.sqlite
