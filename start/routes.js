@@ -18,11 +18,15 @@ const Route = use('Route');
 Route.on('/').render('welcome');
 Route.post('login', 'UserController.login');
 Route.post('register', 'UserController.store');
+Route.get('logout', 'UserController.logout');
 Route.group(() => {
     Route.get('experts', 'ExpertController.index');
     Route.get('experts/:id', 'ExpertController.getExpert');
     Route.get('categories', 'CategoryController.index');
     Route.get('categories/:category/experts', 'ExpertController.getExpertsByCategory');
-    Route.resource('questions', 'QuestionController');
-
+    Route.post('questions', 'QuestionController.store');
+    Route.get('users/:id/questions', 'QuestionController.getQuestionsByUser');
+    Route.get('users/:id', 'UserController.show');
+    Route.get('answers/:hash', 'QuestionController.getQuestionForAnswer');
+    Route.post('answers', 'AnswerController.store');
 }).prefix('api/v1').middleware('auth');

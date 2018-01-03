@@ -21,6 +21,22 @@ class UserController {
 
         return {tokenInfo, user};
     }
+
+    async show ({ auth, params }) {
+        if (auth.user.id !== Number(params.id)) {
+            return 'You cannot see someone else\'s profile';
+        }
+        return auth.user;
+    }
+
+    async logout({auth}) {
+        try {
+            await auth.getUser();
+            return await auth.logout();
+        } catch (e) {
+            return;
+        }
+    }
 }
 
 module.exports = UserController;
