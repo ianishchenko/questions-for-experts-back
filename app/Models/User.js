@@ -3,6 +3,11 @@
 const Model = use('Model');
 
 class User extends Model {
+
+  static get hidden () {
+    return ['password', 'created_at', 'updated_at']
+  }
+
   static boot () {
     super.boot();
 

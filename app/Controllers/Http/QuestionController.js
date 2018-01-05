@@ -13,8 +13,8 @@ class QuestionController {
         const question = new Question();
         question.fill(request.all());
         question.hash = getRandomString(20);
-
-        return await question.save();
+        await question.save();
+        return question;
     }
 
     async getQuestionForAnswer({params}) {
