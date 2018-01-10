@@ -6,7 +6,7 @@ const {getRandomString} = require('../../Helpers/RandomStringHelper');
 class QuestionController {
 
     async getQuestionsByUser({params}) {
-        return Question.query().where('author_id', '=', params.id).fetch();
+      return Question.query().where('author_id', params.id).with('answers').fetch();
     }
 
     async store({request}) {

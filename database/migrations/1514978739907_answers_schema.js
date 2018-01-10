@@ -8,6 +8,7 @@ class AnswersSchema extends Schema {
       table.increments();
       table.timestamps();
       table.string('text');
+      table.number('score').default(0);
       table.integer('question_id').unsigned();
       table.foreign('question_id').references('questions.id').onDelete('CASCADE');
     })

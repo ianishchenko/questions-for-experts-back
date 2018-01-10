@@ -29,4 +29,5 @@ Route.group(() => {
     Route.get('users/:id', 'UserController.show');
     Route.get('answers/:hash', 'QuestionController.getQuestionForAnswer');
     Route.post('answers', 'AnswerController.store');
+    Route.put('answers/:id', 'AnswerController.change');
 }).prefix('api/v1').middleware('auth');

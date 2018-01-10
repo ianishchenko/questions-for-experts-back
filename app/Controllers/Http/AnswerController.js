@@ -14,6 +14,15 @@ class QuestionController {
 
         return await answer.save();
     }
+
+    async change({request, params}){
+        const answer = await Answer.find(params.id);
+        answer.fill(request.all());
+
+        await answer.save();
+
+        return answer;
+    }
 }
 
 module.exports = QuestionController;
