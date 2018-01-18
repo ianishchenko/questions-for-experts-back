@@ -1,12 +1,12 @@
 'use strict';
 
 const Question = use('App/Models/Question');
-const {getRandomString} = require('../../Helpers/RandomStringHelper');
+const {getRandomString} = use('App/Helpers/RandomStringHelper');
 
 class QuestionController {
 
     async getQuestionsByUser({params}) {
-      return Question.query().where('author_id', params.id).with('answers').fetch();
+      return await Question.query().where('author_id', params.id).with('answers').fetch();
     }
 
     async store({request}) {

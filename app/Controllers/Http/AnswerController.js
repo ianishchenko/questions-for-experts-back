@@ -8,7 +8,7 @@ class QuestionController {
         const answer = new Answer();
         answer.fill(request.all());
 
-        const question = await Question.findBy('question_id', request.input('question_id'));
+        const question = await Question.find(request.input('question_id'));
         question.hash = null;
         await question.save();
 
